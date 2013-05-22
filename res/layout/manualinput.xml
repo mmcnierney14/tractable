@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/ui_manual_input_building_title"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/actBuilding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="@string/ui_manual_input_building_hint"
+        android:completionThreshold="1"
+        android:inputType="text">
+
+        <requestFocus />
+    </AutoCompleteTextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ui_manual_input_floor_title" />
+
+    <Spinner
+        android:id="@+id/spinnerFloor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:entries="@array/floor_numbers" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ui_manual_input_bathroom_quality_title" />
+
+    <RatingBar
+        android:id="@+id/ratingBathroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ui_manual_input_experience_title" />
+
+    <SeekBar
+        android:id="@+id/seekExperience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:max="10"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ui_manual_input_comment_title" />
+
+    <EditText
+        android:id="@+id/editComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+        android:hint="@string/ui_manual_input_comment_hint"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal" >
+        
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:onClick="onSaveClicked"
+            android:text="@string/ui_button_save_title" >
+        </Button>
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onCancelClicked"
+            android:text="@string/ui_button_cancel_title" >
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>
