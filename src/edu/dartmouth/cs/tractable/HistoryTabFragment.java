@@ -3,8 +3,6 @@ package edu.dartmouth.cs.tractable;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
-import edu.cs.dartmouth.tractable.R;
-
 import android.app.ListFragment;
 import android.app.LoaderManager;
 import android.content.Context;
@@ -115,10 +113,6 @@ LoaderManager.LoaderCallbacks<Cursor> {
 		String s = parseTime(mBathroomSessionCursor.getLong(mTimeIndex));
 		extras.putString(Globals.KEY_DATE_TIME, s);
 
-//		// write duration into extras
-//		s = parseDuration(mBathroomSessionCursor.getInt(mDurationIndex));
-//		extras.putString(Globals.KEY_DURATION, s);
-
 		// write comment into extras
 		s = mBathroomSessionCursor.getString(mCommentIndex);
 		extras.putString(Globals.KEY_COMMENT, s);
@@ -130,7 +124,7 @@ LoaderManager.LoaderCallbacks<Cursor> {
 		extras.putInt(Globals.KEY_FLOOR, i);
 
 		i = mBathroomSessionCursor.getInt(mBathroomQualityIndex);
-		extras.putInt(Globals.KEY_BATHROOMQUALITY, i);
+		extras.putDouble(Globals.KEY_BATHROOMQUALITY, i);
 
 		i = mBathroomSessionCursor.getInt(mExperienceQualityIndex);
 		extras.putInt(Globals.KEY_EXPERIENCEQUALITY, i);

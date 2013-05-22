@@ -1,7 +1,5 @@
 package edu.dartmouth.cs.tractable;
 
-import edu.cs.dartmouth.tractable.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

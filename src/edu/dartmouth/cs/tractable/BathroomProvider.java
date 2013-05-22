@@ -1,7 +1,6 @@
 package edu.dartmouth.cs.tractable;
 
 import android.content.ContentProvider;
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
@@ -18,7 +17,7 @@ public class BathroomProvider extends ContentProvider {
 	// database
 	private DBHelper database;
 
-	private static final String AUTHORITY = "edu.cs.dartmouth.tractable.bathroomprovider";
+	private static final String AUTHORITY = "edu.dartmouth.cs.tractable.bathroomprovider";
 
 	public static final int ENTRIES_DIR = 100;
 	public static final int ENTRIES_ID = 110;

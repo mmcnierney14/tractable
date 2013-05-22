@@ -53,7 +53,7 @@
         
         <provider
             android:name="edu.dartmouth.cs.tractable.BathroomProvider"
-            android:authorities="edu.cs.dartmouth.tractable.bathroomprovider" >
+            android:authorities="edu.dartmouth.cs.tractable.bathroomprovider" >
         </provider>
         
         <meta-data

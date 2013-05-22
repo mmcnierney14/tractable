@@ -23,8 +23,14 @@
     <!-- tab names -->
     <string name="stats_tab_history_title">History</string>
     <string name="stats_tab_graphs_title">Statistics</string>
+    
+    <!-- some activity names -->
     <string name="title_activity_stats_tab">StatsTabActivity</string>
     <string name="title_activity_display_session">DisplaySessionActivity</string>
+    
+    <!-- for session detail display -->
+    <string name="max_bathroom_quality">5.0</string>
+    <string name="max_experience_quality">10</string>
     
 
     <!-- building floors -->

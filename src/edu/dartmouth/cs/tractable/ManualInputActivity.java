@@ -16,8 +16,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import edu.cs.dartmouth.tractable.R;
-
 public class ManualInputActivity extends Activity {
 
 	// Exercise entry
@@ -52,8 +50,8 @@ public class ManualInputActivity extends Activity {
 		
 		// set up adapter for AutoComplete building list
 		AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.actBuilding);
-	    String [] majors = getResources().getStringArray(R.array.building_array);
-	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, majors);
+	    String [] buildings = getResources().getStringArray(R.array.building_array);
+	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, buildings);
 	    mAutoComplete.setAdapter(adapter);
 		
 	}
