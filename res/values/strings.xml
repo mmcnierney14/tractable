@@ -23,6 +23,7 @@
     <!-- tab names -->
     <string name="stats_tab_history_title">History</string>
     <string name="stats_tab_graphs_title">Graphs</string>
+    <string name="stats_tab_metrics_title">Metrics</string>
     
     <!-- some activity names -->
     <string name="title_activity_stats_tab">StatsTabActivity</string>
