@@ -32,4 +32,6 @@ public abstract class Globals {
 	public static final String KEY_PRIVACY = "privacy";
 	public static final String KEY_GPS_DATA = "gps_data";
 
+	public static final String KEY_WIFI = "wifi";
+
 }
