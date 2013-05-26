@@ -1,5 +1,7 @@
 package edu.dartmouth.cs.tractable;
 
+import java.util.HashMap;
+
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,8 +17,8 @@ public class BathroomInferenceService extends Service {
 	// Inferred bathroom name
 	String bathroomName;
 	
-	String wifiName;
-	
+	private HashMap<String, String> bathroomMap;
+		
 	public static final String DATE_FORMAT = "H:mm:ss MMM d yyyy";
 
 	// Set up binder for the BathroomInferenceService using IBinder
@@ -38,6 +40,12 @@ public class BathroomInferenceService extends Service {
 	@Override
 	public void onCreate() {
 		registerReceiver(locationReceiver, new IntentFilter("bio_location"));
+		
+		// Populate bathroom name hashmap
+		bathroomMap = new HashMap<String, String>();
+		bathroomMap.put("newhamp-2-4-ap", "New Hampshire Hall First Floor");
+		
+		
 	}
 	
 	private BroadcastReceiver locationReceiver = new BroadcastReceiver() {
@@ -45,10 +53,14 @@ public class BathroomInferenceService extends Service {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			Bundle data = intent.getExtras();
-			wifiName = data.getString("key_bio_location", "");
-			wifiName = wifiName.split(";")[0].split(",")[1];
+			String wifiData = data.getString("key_bio_location", "");
+			bathroomName = getBathroomName(wifiData.split(";")[0].split(",")[1]);
 		}
 	};
+	
+	private String getBathroomName(String wifiName) {
+		return bathroomMap.get(wifiName);
+	}
 
 
 }

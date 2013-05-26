@@ -50,7 +50,7 @@ public class ManualInputActivity extends Activity {
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			mBathroomInferenceService = ((BathroomInferenceService.TractableBinder) service).getService();
 			
-			mBathroomName = mBathroomInferenceService.wifiName;
+			mBathroomName = mBathroomInferenceService.bathroomName;
 			
 			if (mBathroomName != null) bathroomNameView.setText(mBathroomName);
 			
