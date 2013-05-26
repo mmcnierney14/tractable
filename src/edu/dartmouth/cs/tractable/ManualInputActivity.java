@@ -1,10 +1,16 @@
 package edu.dartmouth.cs.tractable;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -12,6 +18,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -24,12 +31,38 @@ public class ManualInputActivity extends Activity {
 	public LocationManager mLocationManager;
 	private double latitude;
 	private double longitude;
+	
+	public Intent mBathroomServiceIntent;
+	public BathroomInferenceService mBathroomInferenceService;
+	public String mBathroomName;
+	
+	public TextView bathroomNameView;
 
 	
 	public static final int LIST_ITEM_ID_DATE = 0;
 	public static final int LIST_ITEM_ID_TIME = 1;
 	public static final int LIST_ITEM_ID_DURATION = 2;
 	public Uri manualInputURI;
+	
+	// Service connection for bathroom service
+	private ServiceConnection connection = new ServiceConnection() {
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			mBathroomInferenceService = ((BathroomInferenceService.TractableBinder) service).getService();
+			
+			mBathroomName = mBathroomInferenceService.wifiName;
+			
+			if (mBathroomName != null) bathroomNameView.setText(mBathroomName);
+			
+			Log.d(Globals.TAG, "Closest wifi name: " + mBathroomName);
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 
 	// skeleton
 	@Override
@@ -45,14 +78,24 @@ public class ManualInputActivity extends Activity {
 		
 		
 		// Location manager for getting wifi location
-		String svc = this.LOCATION_SERVICE;
-		mLocationManager = (LocationManager) getSystemService(svc);
+		mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+		
+		// Bathroom inference service to get closest bathroom name
+		mBathroomServiceIntent = new Intent(this, BathroomInferenceService.class);
+		startService(mBathroomServiceIntent);
+		bindService(mBathroomServiceIntent, connection, Context.BIND_AUTO_CREATE);
+		
+		// Get the bathroom text view
+		bathroomNameView = (TextView) findViewById(R.id.bathroom_name);
+		
 		
 		// set up adapter for AutoComplete building list
-		AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.actBuilding);
-	    String [] buildings = getResources().getStringArray(R.array.building_array);
-	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, buildings);
-	    mAutoComplete.setAdapter(adapter);
+//		AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.actBuilding);
+//	    String [] buildings = getResources().getStringArray(R.array.building_array);
+//	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, buildings);
+//	    mAutoComplete.setAdapter(adapter);
+		
+		
 		
 	}
 
@@ -60,7 +103,6 @@ public class ManualInputActivity extends Activity {
 	public void onSaveClicked(View v) {
 		
 		setBuilding();
-		setFloor();
 		setBathroomQuality();
 		setExperienceQuality();
 		setComment();
@@ -100,15 +142,7 @@ public class ManualInputActivity extends Activity {
 	}
 	
 	public void setBuilding() {
-		AutoCompleteTextView act = (AutoCompleteTextView) findViewById(R.id.actBuilding);
-		String building = act.getText().toString();
-		mEntry.setBuilding(building);
-	}
-	
-	public void setFloor() {
-		Spinner spin = (Spinner) findViewById(R.id.spinnerFloor);
-		int position = spin.getSelectedItemPosition();
-		mEntry.setFloor(position);
+		mEntry.setBuilding(mBathroomName);
 	}
 	
 	public void setBathroomQuality() {
