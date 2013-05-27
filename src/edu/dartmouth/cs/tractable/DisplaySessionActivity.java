@@ -73,9 +73,6 @@ public class DisplaySessionActivity extends Activity {
 				TextView tv = (TextView) v.findViewById(R.id.textBuilding);
 				tv.setText("Building: " + i.getStringExtra(Globals.KEY_BUILDING));
 				
-				tv = (TextView) v.findViewById(R.id.textFloor);
-				tv.setText("Floor: " + i.getIntExtra(Globals.KEY_FLOOR, -1));
-				
 				tv = (TextView) v.findViewById(R.id.textBathroomQuality);
 				tv.setText("Bathroom Quality: " +
 							i.getDoubleExtra(Globals.KEY_BATHROOMQUALITY, -1) +
