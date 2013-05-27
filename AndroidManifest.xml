@@ -51,6 +51,8 @@
             android:label="@string/title_activity_display_session" >
         </activity>
         
+        <service android:name="edu.dartmouth.cs.tractable.BathroomInferenceService" />
+        
         <provider
             android:name="edu.dartmouth.cs.tractable.BathroomProvider"
             android:authorities="edu.dartmouth.cs.tractable.bathroomprovider" >
