@@ -35,7 +35,9 @@
     <!-- stats info -->
     <string name="stats_av_experience_id">av_experience_text</string>
     
-
+    <!-- loading text -->
+	<string name="ui_manual_input_loading">Loading…</string>
+	
     <!-- building floors -->
     <string-array name="floor_numbers">
         <item>Basement</item>
