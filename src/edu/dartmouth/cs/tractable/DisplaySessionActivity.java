@@ -33,6 +33,8 @@ public class DisplaySessionActivity extends Activity {
 	public double longitude;
 	public Marker mMarker;
 
+	public static final String MINUTES_FORMAT = "%d minutes";
+	public static final String SECONDS_FORMAT = "%d seconds";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,11 @@ public class DisplaySessionActivity extends Activity {
 				
 				tv = (TextView) v.findViewById(R.id.textComment);
 				tv.setText("Comment: " + 
-							i.getStringExtra(Globals.KEY_COMMENT));
+						i.getStringExtra(Globals.KEY_COMMENT));
+				
+				tv = (TextView) v.findViewById(R.id.textDuration);
+				tv.setText("Duration: " + 
+						parseDuration(i.getIntExtra(Globals.KEY_DURATION, -1)));
 				
 				return v;
 			}
@@ -106,6 +112,15 @@ public class DisplaySessionActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.display_session, menu);
 		return true;
+	}
+	
+
+	// Convert duration in seconds to minutes.
+	private String parseDuration(int durationInSeconds) {
+		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
+				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
+						durationInSeconds);
+
 	}
 	
 }

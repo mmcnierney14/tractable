@@ -1,10 +1,12 @@
 package edu.dartmouth.cs.tractable;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -36,12 +38,18 @@ public class ManualInputActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		
 
 		// Setting the UI layout
 		setContentView(R.layout.manualinput);
 
 		// Initialize the ExerciseEntryHelper()
 		mEntry = new BathroomSessionHelper();
+		
+		// get the duration from the timer and save it into the entry
+		int duration = getIntent().getIntExtra(Globals.KEY_DURATION, -1);
+		Log.e("tractable", "in manualinputactivity duration = " + String.valueOf(duration));
+		mEntry.setDuration(duration);
 		
 		
 		// Location manager for getting wifi location
@@ -70,8 +78,10 @@ public class ManualInputActivity extends Activity {
 		mEntry.insertToDB(this);
 
 		Toast.makeText(getApplicationContext(), "Entry Saved", Toast.LENGTH_SHORT).show();
-		// Close the activity
-		finish();
+		// Close the activity and go back to start page
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
 	}
 
 	//skeleton
@@ -82,8 +92,10 @@ public class ManualInputActivity extends Activity {
 		Toast.makeText(getApplicationContext(),
 				"Canceled",
 				Toast.LENGTH_SHORT).show();
-		// Close the activity
-		finish();
+		// Close the activity and go back to start page
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
 	}
 
 

@@ -48,6 +48,7 @@ public class BathroomSessionHelper {
 		values.put(Globals.KEY_BATHROOMQUALITY, mData.getBathroomQuality());
 		values.put(Globals.KEY_EXPERIENCEQUALITY, mData.getExperienceQuality());
 		values.put(Globals.KEY_COMMENT, mData.getComment());
+		values.put(Globals.KEY_DURATION, mData.getDuration());
 
 //		// get the content resolver, insert the ContentValues into HistoryProvider.
   		Uri uri = context.getContentResolver().insert(BathroomProvider.CONTENT_URI, values);

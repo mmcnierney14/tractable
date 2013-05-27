@@ -50,6 +50,10 @@
             android:name="edu.dartmouth.cs.tractable.DisplaySessionActivity"
             android:label="@string/title_activity_display_session" >
         </activity>
+        <activity
+            android:name="edu.dartmouth.cs.tractable.TimerActivity"
+            android:label="Start" >
+        </activity>
         
         <provider
             android:name="edu.dartmouth.cs.tractable.BathroomProvider"

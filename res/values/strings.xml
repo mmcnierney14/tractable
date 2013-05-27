@@ -19,6 +19,13 @@
     <string name="ui_button_change_title">Change</string>
     <string name="ui_button_ok_title">OK</string>
     <string name="ui_button_start_title">Start</string>
+    
+    <!-- some color info -->
+    <color name="white">#FFFFFF</color>
+    <color name="green">#004000</color>
+    <color name="gray">#333333</color>
+    
+    
 
     <!-- tab names -->
     <string name="stats_tab_history_title">History</string>

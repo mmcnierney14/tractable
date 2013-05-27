@@ -20,7 +20,8 @@ public class BathroomTable{
 			public static final String KEY_FLOOR = Globals.KEY_FLOOR;
 			public static final String KEY_BATHROOMQUALITY = Globals.KEY_BATHROOMQUALITY;
 			public static final String KEY_EXPERIENCEQUALITY = Globals.KEY_EXPERIENCEQUALITY;		
-			public static final String KEY_COMMENT = Globals.KEY_COMMENT;
+			public static final String KEY_COMMENT = Globals.KEY_COMMENT;		
+			public static final String KEY_DURATION = Globals.KEY_DURATION;
 
 			// SQL query to create the table for the first time
 			// Data types are defined below
@@ -44,7 +45,9 @@ public class BathroomTable{
 					+ KEY_EXPERIENCEQUALITY
 					+ " INTEGER, "
 					+ KEY_COMMENT
-					+ " TEXT"
+					+ " TEXT, "
+					+ KEY_DURATION
+					+ " INTEGER "
 					+ ");";
 			
 			public static void onCreate(SQLiteDatabase database) {
