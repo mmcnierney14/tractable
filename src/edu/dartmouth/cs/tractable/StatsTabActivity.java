@@ -23,16 +23,19 @@ private static final String TAB_INDEX_KEY = "tab_index";
 		// create tabs for start, history, and settings
 		String graphsStr = getString(R.string.stats_tab_graphs_title);
 		String historyStr = getString(R.string.stats_tab_history_title);
+		String metricsStr = getString(R.string.stats_tab_metrics_title);
 
 		ActionBar.Tab mGraphsTab = actionbar.newTab().setText(graphsStr);		
 		ActionBar.Tab mHistoryTab = actionbar.newTab().setText(historyStr);
-		
+		ActionBar.Tab mMetricsTab = actionbar.newTab().setText(metricsStr);		
 		
 		// bind the fragments to their tabs and add tabs to action bar
 		mGraphsTab.setTabListener(new TabListener<GraphsTabFragment>(this, graphsStr, GraphsTabFragment.class));
 		mHistoryTab.setTabListener(new TabListener<HistoryTabFragment>(this, historyStr, HistoryTabFragment.class));
+		mMetricsTab.setTabListener(new TabListener<MetricsTabFragment>(this, metricsStr, MetricsTabFragment.class));
 		actionbar.addTab(mGraphsTab);
 		actionbar.addTab(mHistoryTab);
+		actionbar.addTab(mMetricsTab);
 
 		
 		// remember the tab we were on (mainly for orientation changes)

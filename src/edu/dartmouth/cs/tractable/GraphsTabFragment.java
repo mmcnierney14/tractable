@@ -22,6 +22,7 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Paint.Align;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,8 +36,9 @@ public class GraphsTabFragment extends Fragment {
 	private GraphicalView mChart;
     private XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
     private XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
-    private XYSeries mCurrentSeries;
+    private XYValueSeries mCurrentSeries;
     private XYSeriesRenderer mCurrentRenderer;
+    
 	
 	// The callbacks through which we will interact with the LoaderManager.
 	private LoaderManager.LoaderCallbacks<Cursor> mCallbacks;
@@ -69,33 +71,46 @@ public class GraphsTabFragment extends Fragment {
 		View view = inflater.inflate(R.layout.graphs, container, false);
 	
 		
-		String av_experience;
 		// get the average experience value
 		if (mBathroomSessionCursor.getCount() != 0) {
-			av_experience = String.valueOf(get_av_experience(mBathroomSessionCursor)); // if no entries have been logged, av = none
+			//av_experience = String.valueOf(get_av_experience(mBathroomSessionCursor)); // if no entries have been logged, av = none
 
 			mCurrentSeries = experience_data(mBathroomSessionCursor);
 		}
 		else {
-			av_experience = "None Logged Yet!";
-			mCurrentSeries = new XYSeries("NOTHING LOGGED YET");
+			mCurrentSeries = new XYValueSeries("NOTHING LOGGED YET");
 			mCurrentSeries.add(1, 0);
-	        mCurrentSeries.add(2, 0);
-	        mCurrentSeries.add(3, 0);
-	        mCurrentSeries.add(4, 0);
-	        mCurrentSeries.add(5, 0);
 		}
 		
-		// set the average experience value text in xml
-		TextView experience_view = (TextView) view.findViewById(R.id.av_experience_text);
-		experience_view.setText(av_experience);
 
+		
 		mDataset.addSeries(mCurrentSeries);
 		mCurrentRenderer = new XYSeriesRenderer();
+		mCurrentRenderer.setLineWidth(0);
+		mCurrentRenderer.setColor(Color.WHITE);
+		mCurrentRenderer.setFillPoints(true);
+		mCurrentRenderer.setPointStyle(PointStyle.CIRCLE);
 		mRenderer.addSeriesRenderer(mCurrentRenderer);
 		
-
-        mChart = ChartFactory.getCubeLineChartView(getActivity(), mDataset, mRenderer, 0.3f);
+		mRenderer.setMargins(new int[] {100, 75, 10, 50});
+		mRenderer.setYAxisMin(0, 0);
+		mRenderer.setYAxisMax(12, 0);
+		mRenderer.setXTitle("Time");
+		mRenderer.setYTitle("Experience");
+		mRenderer.setAxisTitleTextSize(40);
+		mRenderer.setChartTitleTextSize(12);
+		mRenderer.setLabelsTextSize(10);
+		mRenderer.setLegendTextSize(12);
+		mRenderer.setPointSize(5f);
+		mRenderer.setXLabels(12);
+		mRenderer.setYLabels(12);
+		mRenderer.setXLabelsAlign(Align.RIGHT);
+		mRenderer.setYLabelsAlign(Align.RIGHT);
+		mRenderer.setPanLimits(new double[] { -10, 20, -10, 40 });
+		mRenderer.setZoomLimits(new double[] { -10, 20, -10, 40 });
+		mRenderer.setApplyBackgroundColor(true);
+		mRenderer.setBackgroundColor(Color.parseColor("#333333"));
+        mChart = ChartFactory.getBubbleChartView(getActivity(), mDataset, mRenderer);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
         layout.addView(mChart);
 
@@ -122,14 +137,18 @@ public class GraphsTabFragment extends Fragment {
 				projection, null, null, null);
 	}
 	
+	
+	
 	// function to plot the points of the overall experience chart
-	public XYSeries experience_data(Cursor cursor) {
-		XYSeries result = mCurrentSeries = new XYSeries("Sample Data");
+	public XYValueSeries experience_data(Cursor cursor) {
+		XYValueSeries result = new XYValueSeries("Number of Sessions");
 		
 		int i = 1;
 		cursor.moveToFirst();
 		do {
-			result.add(i, cursor.getInt(mBathroomSessionCursor.getColumnIndex(Globals.KEY_EXPERIENCEQUALITY)));
+			int current = cursor.getInt(mBathroomSessionCursor.getColumnIndex(Globals.KEY_EXPERIENCEQUALITY));
+			int num = 3; // FILL THIS IN (SHOULD BE NUMBER OF SESSION THAT DAY)
+			result.add(Double.valueOf(i), Float.valueOf(String.valueOf(current)), num);
 		}
 		while (cursor.moveToNext());
 		
@@ -137,26 +156,7 @@ public class GraphsTabFragment extends Fragment {
 		
 	}
 	
-	// function to get the average experience of all saved bathroom sessions
-	public double get_av_experience(Cursor cursor) {
-		
-		double av_experience = 0;
-		
-		// move cursor to beginning of set
-		cursor.moveToFirst();
-		
-		// add up all user experience values
-		do {
-			av_experience += cursor.getInt(mBathroomSessionCursor.getColumnIndex(Globals.KEY_EXPERIENCEQUALITY));
-		}
-		while (cursor.moveToNext());
-		
-		// divide by the total number of bathroom sets
-		int num_entries = cursor.getCount();
-		av_experience = av_experience / num_entries;
-		
-		return av_experience;
-	}
+	
 	
 	
 	// METHODS USED FOR GRAPHING
