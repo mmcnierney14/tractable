@@ -4,8 +4,6 @@
     <string name="app_name">Tractable</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="start_button">Start</string>
-    <string name="stats_button">Statistics</string>
     <string name="image_description">This is an Image View!</string>
     <string name="ui_manual_input_building_title">Building Name:</string>
     <string name="ui_manual_input_building_hint">Enter building name</string>
@@ -19,26 +17,29 @@
     <string name="ui_button_change_title">Change</string>
     <string name="ui_button_ok_title">OK</string>
     <string name="ui_button_start_title">Start</string>
+    <string name="ui_button_stats_title">Statistics</string>
+    <string name="ui_button_sync_title">Sync Log</string>
+    <string name="ui_button_done_title">I\'m Done!</string>
 
     <!-- tab names -->
     <string name="stats_tab_history_title">History</string>
     <string name="stats_tab_graphs_title">Graphs</string>
     <string name="stats_tab_metrics_title">Metrics</string>
-    
+
     <!-- some activity names -->
     <string name="title_activity_stats_tab">StatsTabActivity</string>
     <string name="title_activity_display_session">DisplaySessionActivity</string>
-    
+
     <!-- for session detail display -->
     <string name="max_bathroom_quality">5.0</string>
     <string name="max_experience_quality">10</string>
-    
+
     <!-- stats info -->
     <string name="stats_av_experience_id">av_experience_text</string>
-    
+
     <!-- loading text -->
-	<string name="ui_manual_input_loading">Loading…</string>
-	
+    <string name="ui_manual_input_loading">Loading…</string>
+
     <!-- building floors -->
     <string-array name="floor_numbers">
         <item>Basement</item>
@@ -48,202 +49,202 @@
         <item>Fourth</item>
         <item>Fifth</item>
     </string-array>
-    
+
     <!-- buildings -->
     <string-array name="building_array">
-				<item>1 Rope Ferry Road</item>
-				<item>11 Rope Ferry Road</item>
-				<item>13 East Wheelock Street</item>
-				<item>19 East Wheelock Street</item>
-				<item>3 Rope Ferry Road</item>\cf2 
-				<item>37 Dewey Field Road</item>
-				<item>44 North College Street</item>
-				<item>5 Rope Ferry Road</item>
-				<item>6 Rope Ferry Road</item>
-				<item>Achtmeyer Hall</item>
-				<item>Alpha Chi Alpha</item>
-				<item>Alpha Delta</item>
-				<item>Alpha Phi Alpha</item>
-				<item>Alpha Phi</item>
-				<item>Alpha Theta</item>
-				<item>Alpha Xi Delta</item>
-				<item>Alumni Gym</item>
-				<item>Amarna</item>
-				<item>Andres Hall</item>
-				<item>Aquinas House</item>
-				<item>Baker Library</item>
-				<item>Baker Stacks</item>
-				<item>Bartlett Hall</item>
-				<item>Berry Dormitory</item>
-				<item>Berry Library</item>
-				<item>Beta Alpha Omega</item>
-				<item>Bildner</item>
-				<item>Bissco Commons</item>
-				<item>Bissell Hall</item>
-				<item>Black Family Visual Arts Center</item>
-				<item>Blunt Alumni Center</item>
-				<item>Bones Gate</item>
-				<item>Boss Tennis Center &amp; Gordon Pavilion</item>
-				<item>Brace Commons</item>
-				<item>Brittle Commons</item>
-				<item>Brown Hall</item>
-				<item>Bryne II</item>
-				<item>Buchanan</item>
-				<item>Burke Laboratory</item>
-				<item>Burnham Field</item>
-				<item>Butterfield Hall</item>
-				<item>Byrne Hall</item>
-				<item>Carpenter Hall</item>
-				<item>Carson Hall</item>
-				<item>Casque &amp; Gauntlet</item>
-				<item>Channing Cox Hall</item>
-				<item>Chase Hall</item>
-				<item>Chi Gamma Epsilon</item>
-				<item>Chi Heorot</item>
-				<item>Chinese Language House</item>
-				<item>Choate House</item>
-				<item>Church of Christ at Dartmouth College</item>
-				<item>Class of 1953 Commons</item>
-				<item>Cobra</item>
-				<item>Cohen Hall</item>
-				<item>Collis Student Center</item>
-				<item>Cummings Hall</item>
-				<item>Cutter Shabazz</item>
-				<item>Dartmouth Hall</item>
-				<item>Davis Varsity House</item>
-				<item>Delta Delta Delta</item>
-				<item>Dick\'s House</item>
-				<item>Dirt Cowboy</item>
-				<item>Dragon</item>
-				<item>Edgerton House</item>
-				<item>Epsilon Kappa Theta</item>
-				<item>Fahey Hall</item>
-				<item>Fairchild Physical Sciences Center</item>
-				<item>Faulkner</item>
-				<item>Feldberg Library</item>
-				<item>Fire &amp; Skoal</item>
-				<item>First Church of Christ Scientist</item>
-				<item>Floren Varsity House</item>
-				<item>Foley House</item>
-				<item>French Hall</item>
-				<item>Friends of Dartmouth Rowing Boathouse</item>
-				<item>Fuller Boat Shed</item>
-				<item>Gamma Delta Chi</item>
-				<item>Gile Hall</item>
-				<item>Goldstein</item>
-				<item>Haldeman Center</item>
-				<item>Hallgarten Hall</item>
-				<item>Hanover Co-op</item>
-				<item>Hanover High School</item>
-				<item>Hanover Inn</item>
-				<item>Hanover Lutheran Church</item>
-				<item>Hitchcock Hall</item>
-				<item>Hood Annex</item>
-				<item>Hood Museum of Art</item>
-				<item>Howe Public Library</item>
-				<item>Judge Hall</item>
-				<item>Kappa Kappa Gamma</item>
-				<item>Kappa Kappa Kappa</item>\cf2 
-				<item>Kellogg Auditorium</item>
-				<item>Kemeny Hall</item>
-				<item>Kresge Library</item>
-				<item>LALACS</item>
-				<item>La Casa</item>
-				<item>Leede Arena</item>
-				<item>Leverone Fieldhouse</item>
-				<item>Life Sciences Center</item>
-				<item>Little Hall</item>
-				<item>Lord Hall</item>
-				<item>MacLean Engineering Sciences Center</item>
-				<item>Maxwell Hall</item>
-				<item>McCulloch Hall</item>
-				<item>McKenzie Hall</item>
-				<item>McLane Hall</item>
-				<item>McNutt Hall</item>
-				<item>Memorial Field East Stands</item>
-				<item>Memorial Field West Stands</item>
-				<item>Mid-Fayerweather Hall</item>
-				<item>Mid-Massachusetts Hall</item>
-				<item>Moore Psychology Building</item>
-				<item>Moosilauke Ravine Lodge</item>
-				<item>Morton Hall</item>
-				<item>Murdough Center</item>
-				<item>Native American House</item>
-				<item>New Hampshire Hall</item>
-				<item>North Fairbanks</item>
-				<item>North Fayerweather Hall</item>
-				<item>North Hall</item>
-				<item>North Massachusetts Hall</item>
-				<item>North Park Graduate Housing</item>
-				<item>Paddock Music Library</item>
-				<item>Panarchy</item>
-				<item>Parker House</item>
-				<item>Parkhurst Hall</item>
-				<item>Phi Delta Alpha</item>
-				<item>Phi Tau</item>
-				<item>Pineau Hall</item>
-				<item>Pottery Studio</item>
-				<item>President\'s House</item>
-				<item>Psi Upsilon</item>
-				<item>Raether Hall</item>
-				<item>Rauner Dormitory</item>
-				<item>Rauner Library</item>
-				<item>Red Rolfe Field at Biondi Park</item>
-				<item>Reed Hall</item>
-				<item>Remsen</item>
-				<item>Richardson Hall</item>
-				<item>Ripley Hall</item>
-				<item>Robinson Hall</item>
-				<item>Rollins Chapel</item>
-				<item>Roth Center</item>
-				<item>Russell Sage Hall</item>
-				<item>Saint Dennis Catholic Church</item>
-				<item>Saint Thomas Episcopal Church</item>
-				<item>Sanborn House</item>
-				<item>Scully-Fahey Field</item>
-				<item>Shattuck Observatory</item>
-				<item>Sherman House</item>
-				<item>Sigma Alpha Epsilon</item>
-				<item>Sigma Delta</item>
-				<item>Sigma Nu</item>
-				<item>Sigma Phi Epsilon</item>
-				<item>Smith Hall</item>
-				<item>South Fairbanks</item>
-				<item>South Fayerweather Hall</item>
-				<item>South Massachusetts Hall</item>
-				<item>Sphinx</item>
-				<item>Steele Hall</item>
-				<item>Stell Hall</item>
-				<item>Streeter Hall</item>
-				<item>Sudikoff Hall</item>
-				<item>Tabard</item>
-				<item>The Hopkins Center for the Arts</item>
-				<item>The Lodge</item>
-				<item>The Nugget</item>
-				<item>The Second College Grant</item>
-				<item>Theta Delta Chi</item>
-				<item>Thomas</item>
-				<item>Thompson Arena</item>
-				<item>Thornton Hall</item>
-				<item>Tom Dent Cabin</item>
-				<item>Topliff Hall</item>
-				<item>Tuck Hall</item>
-				<item>Vail</item>
-				<item>Webster Cottage</item>
-				<item>Webster Hall</item>
-				<item>Wentworth Hall</item>
-				<item>Wheeler Hall</item>
-				<item>Wheelock House</item>
-				<item>Whittemore Hall</item>
-				<item>Wilder Hall</item>
-				<item>Wilson Hall</item>
-				<item>Winifred-Raven House</item>
-				<item>Woodbury Hall</item>
-				<item>Woodward Hall</item>
-				<item>Zeta Psi</item>
-				<item>Zimmerman Hall</item>
-		</string-array>
-    
+        <item>1 Rope Ferry Road</item>
+        <item>11 Rope Ferry Road</item>
+        <item>13 East Wheelock Street</item>
+        <item>19 East Wheelock Street</item>
+        <item>3 Rope Ferry Road</item>
+        <item>37 Dewey Field Road</item>
+        <item>44 North College Street</item>
+        <item>5 Rope Ferry Road</item>
+        <item>6 Rope Ferry Road</item>
+        <item>Achtmeyer Hall</item>
+        <item>Alpha Chi Alpha</item>
+        <item>Alpha Delta</item>
+        <item>Alpha Phi Alpha</item>
+        <item>Alpha Phi</item>
+        <item>Alpha Theta</item>
+        <item>Alpha Xi Delta</item>
+        <item>Alumni Gym</item>
+        <item>Amarna</item>
+        <item>Andres Hall</item>
+        <item>Aquinas House</item>
+        <item>Baker Library</item>
+        <item>Baker Stacks</item>
+        <item>Bartlett Hall</item>
+        <item>Berry Dormitory</item>
+        <item>Berry Library</item>
+        <item>Beta Alpha Omega</item>
+        <item>Bildner</item>
+        <item>Bissco Commons</item>
+        <item>Bissell Hall</item>
+        <item>Black Family Visual Arts Center</item>
+        <item>Blunt Alumni Center</item>
+        <item>Bones Gate</item>
+        <item>Boss Tennis Center &amp; Gordon Pavilion</item>
+        <item>Brace Commons</item>
+        <item>Brittle Commons</item>
+        <item>Brown Hall</item>
+        <item>Bryne II</item>
+        <item>Buchanan</item>
+        <item>Burke Laboratory</item>
+        <item>Burnham Field</item>
+        <item>Butterfield Hall</item>
+        <item>Byrne Hall</item>
+        <item>Carpenter Hall</item>
+        <item>Carson Hall</item>
+        <item>Casque &amp; Gauntlet</item>
+        <item>Channing Cox Hall</item>
+        <item>Chase Hall</item>
+        <item>Chi Gamma Epsilon</item>
+        <item>Chi Heorot</item>
+        <item>Chinese Language House</item>
+        <item>Choate House</item>
+        <item>Church of Christ at Dartmouth College</item>
+        <item>Class of 1953 Commons</item>
+        <item>Cobra</item>
+        <item>Cohen Hall</item>
+        <item>Collis Student Center</item>
+        <item>Cummings Hall</item>
+        <item>Cutter Shabazz</item>
+        <item>Dartmouth Hall</item>
+        <item>Davis Varsity House</item>
+        <item>Delta Delta Delta</item>
+        <item>Dick\'s House</item>
+        <item>Dirt Cowboy</item>
+        <item>Dragon</item>
+        <item>Edgerton House</item>
+        <item>Epsilon Kappa Theta</item>
+        <item>Fahey Hall</item>
+        <item>Fairchild Physical Sciences Center</item>
+        <item>Faulkner</item>
+        <item>Feldberg Library</item>
+        <item>Fire &amp; Skoal</item>
+        <item>First Church of Christ Scientist</item>
+        <item>Floren Varsity House</item>
+        <item>Foley House</item>
+        <item>French Hall</item>
+        <item>Friends of Dartmouth Rowing Boathouse</item>
+        <item>Fuller Boat Shed</item>
+        <item>Gamma Delta Chi</item>
+        <item>Gile Hall</item>
+        <item>Goldstein</item>
+        <item>Haldeman Center</item>
+        <item>Hallgarten Hall</item>
+        <item>Hanover Co-op</item>
+        <item>Hanover High School</item>
+        <item>Hanover Inn</item>
+        <item>Hanover Lutheran Church</item>
+        <item>Hitchcock Hall</item>
+        <item>Hood Annex</item>
+        <item>Hood Museum of Art</item>
+        <item>Howe Public Library</item>
+        <item>Judge Hall</item>
+        <item>Kappa Kappa Gamma</item>
+        <item>Kappa Kappa Kappa</item>
+        <item>Kellogg Auditorium</item>
+        <item>Kemeny Hall</item>
+        <item>Kresge Library</item>
+        <item>LALACS</item>
+        <item>La Casa</item>
+        <item>Leede Arena</item>
+        <item>Leverone Fieldhouse</item>
+        <item>Life Sciences Center</item>
+        <item>Little Hall</item>
+        <item>Lord Hall</item>
+        <item>MacLean Engineering Sciences Center</item>
+        <item>Maxwell Hall</item>
+        <item>McCulloch Hall</item>
+        <item>McKenzie Hall</item>
+        <item>McLane Hall</item>
+        <item>McNutt Hall</item>
+        <item>Memorial Field East Stands</item>
+        <item>Memorial Field West Stands</item>
+        <item>Mid-Fayerweather Hall</item>
+        <item>Mid-Massachusetts Hall</item>
+        <item>Moore Psychology Building</item>
+        <item>Moosilauke Ravine Lodge</item>
+        <item>Morton Hall</item>
+        <item>Murdough Center</item>
+        <item>Native American House</item>
+        <item>New Hampshire Hall</item>
+        <item>North Fairbanks</item>
+        <item>North Fayerweather Hall</item>
+        <item>North Hall</item>
+        <item>North Massachusetts Hall</item>
+        <item>North Park Graduate Housing</item>
+        <item>Paddock Music Library</item>
+        <item>Panarchy</item>
+        <item>Parker House</item>
+        <item>Parkhurst Hall</item>
+        <item>Phi Delta Alpha</item>
+        <item>Phi Tau</item>
+        <item>Pineau Hall</item>
+        <item>Pottery Studio</item>
+        <item>President\'s House</item>
+        <item>Psi Upsilon</item>
+        <item>Raether Hall</item>
+        <item>Rauner Dormitory</item>
+        <item>Rauner Library</item>
+        <item>Red Rolfe Field at Biondi Park</item>
+        <item>Reed Hall</item>
+        <item>Remsen</item>
+        <item>Richardson Hall</item>
+        <item>Ripley Hall</item>
+        <item>Robinson Hall</item>
+        <item>Rollins Chapel</item>
+        <item>Roth Center</item>
+        <item>Russell Sage Hall</item>
+        <item>Saint Dennis Catholic Church</item>
+        <item>Saint Thomas Episcopal Church</item>
+        <item>Sanborn House</item>
+        <item>Scully-Fahey Field</item>
+        <item>Shattuck Observatory</item>
+        <item>Sherman House</item>
+        <item>Sigma Alpha Epsilon</item>
+        <item>Sigma Delta</item>
+        <item>Sigma Nu</item>
+        <item>Sigma Phi Epsilon</item>
+        <item>Smith Hall</item>
+        <item>South Fairbanks</item>
+        <item>South Fayerweather Hall</item>
+        <item>South Massachusetts Hall</item>
+        <item>Sphinx</item>
+        <item>Steele Hall</item>
+        <item>Stell Hall</item>
+        <item>Streeter Hall</item>
+        <item>Sudikoff Hall</item>
+        <item>Tabard</item>
+        <item>The Hopkins Center for the Arts</item>
+        <item>The Lodge</item>
+        <item>The Nugget</item>
+        <item>The Second College Grant</item>
+        <item>Theta Delta Chi</item>
+        <item>Thomas</item>
+        <item>Thompson Arena</item>
+        <item>Thornton Hall</item>
+        <item>Tom Dent Cabin</item>
+        <item>Topliff Hall</item>
+        <item>Tuck Hall</item>
+        <item>Vail</item>
+        <item>Webster Cottage</item>
+        <item>Webster Hall</item>
+        <item>Wentworth Hall</item>
+        <item>Wheeler Hall</item>
+        <item>Wheelock House</item>
+        <item>Whittemore Hall</item>
+        <item>Wilder Hall</item>
+        <item>Wilson Hall</item>
+        <item>Winifred-Raven House</item>
+        <item>Woodbury Hall</item>
+        <item>Woodward Hall</item>
+        <item>Zeta Psi</item>
+        <item>Zimmerman Hall</item>
+    </string-array>
 
-    
+    <string name="title_activity_waiting">WaitingActivity</string>
+
 </resources>

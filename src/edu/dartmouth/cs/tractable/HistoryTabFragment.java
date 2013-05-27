@@ -1,7 +1,10 @@
 package edu.dartmouth.cs.tractable;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+
+import edu.dartmouth.cs.tractable.gae.HistoryUploader;
 
 import android.app.ListFragment;
 import android.app.LoaderManager;
@@ -10,13 +13,17 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HistoryTabFragment extends ListFragment implements 
 LoaderManager.LoaderCallbacks<Cursor> {
@@ -33,7 +40,6 @@ LoaderManager.LoaderCallbacks<Cursor> {
 
 	public Cursor mBathroomSessionCursor;
 
-
 	public int mRowIdIndex;
 	public int mTimeIndex;
 	public int mCommentIndex;
@@ -46,9 +52,12 @@ LoaderManager.LoaderCallbacks<Cursor> {
 
 	// Different format to display the information
 	public static final String DATE_FORMAT = "H:mm:ss MMM d yyyy";
-	public static final String DISTANCE_FORMAT = "#.##";
 	public static final String MINUTES_FORMAT = "%d minutes";
 	public static final String SECONDS_FORMAT = "%d seconds";
+	
+	private Button mButtonSync;
+
+	private HistoryUploader mHistoryUploader;
 
 
 	@Override
@@ -81,6 +90,11 @@ LoaderManager.LoaderCallbacks<Cursor> {
 		// Set the mAdapter to show the list.
 		mAdapter = new BathroomSessionsCursorAdapter(mContext, mBathroomSessionCursor);
 		setListAdapter(mAdapter);
+		
+		// Initialize uploader
+		String serverUrl = Globals.SERVER_URL + "/post_data";
+		mHistoryUploader = new HistoryUploader(mContext, serverUrl);
+		
 	}
 
 	@Override
@@ -88,7 +102,60 @@ LoaderManager.LoaderCallbacks<Cursor> {
 			Bundle savedInstanceState) {
 
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.history, container, false);
+		View view = inflater.inflate(R.layout.history, container, false);
+		
+		mButtonSync = (Button) view.findViewById(R.id.btnSync);
+		
+		mButtonSync.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				onSyncClicked(v);
+			}
+		});
+		return view;
+	}
+
+	public void onSyncClicked(View view) {
+
+		new AsyncTask<Void, Void, String>() {
+
+			@Override
+			// Get history and upload it to the server. 
+			protected String doInBackground(Void... arg0) {
+				// Query to access the database.
+				//Cursor c = mContext.getContentResolver().query(BathroomProvider.CONTENT_URI, null, null, null, null);
+
+				String uploadState = "";
+				// Upload the history of all entries using upload(). 
+
+				try {
+					mHistoryUploader.upload(mBathroomSessionCursor);
+					Log.i(Globals.TAG, "uploaded");
+				} catch (IOException e1) {
+					uploadState = "Sync failed: " + e1.getCause();
+					Log.e(Globals.TAG, "data posting error " + e1);
+				}
+
+
+				return uploadState;
+			}
+
+			@Override
+			protected void onPostExecute(String errString) {
+				String resultString;
+				if(errString.equals("")) {
+					resultString =  "All entries uploaded.";
+				} else {
+					resultString = errString;
+				}
+
+				// Making a "toast" informing the user that the upload succeeded.
+				Toast.makeText(mContext,
+						resultString,
+						Toast.LENGTH_SHORT).show();
+			}
+
+		}.execute();
+
 	}
 
 
