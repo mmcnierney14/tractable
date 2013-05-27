@@ -36,7 +36,7 @@ public class GraphsTabFragment extends Fragment {
 	private GraphicalView mChart;
     private XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
     private XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
-    private XYSeries mCurrentSeries;
+    private XYValueSeries mCurrentSeries;
     private XYSeriesRenderer mCurrentRenderer;
     
 	
@@ -71,7 +71,6 @@ public class GraphsTabFragment extends Fragment {
 		View view = inflater.inflate(R.layout.graphs, container, false);
 	
 		
-		String av_experience;
 		// get the average experience value
 		if (mBathroomSessionCursor.getCount() != 0) {
 			//av_experience = String.valueOf(get_av_experience(mBathroomSessionCursor)); // if no entries have been logged, av = none
@@ -79,8 +78,7 @@ public class GraphsTabFragment extends Fragment {
 			mCurrentSeries = experience_data(mBathroomSessionCursor);
 		}
 		else {
-			av_experience = "None Logged Yet!";
-			mCurrentSeries = new XYSeries("NOTHING LOGGED YET");
+			mCurrentSeries = new XYValueSeries("NOTHING LOGGED YET");
 			mCurrentSeries.add(1, 0);
 		}
 		
@@ -112,8 +110,7 @@ public class GraphsTabFragment extends Fragment {
 		mRenderer.setZoomLimits(new double[] { -10, 20, -10, 40 });
 		mRenderer.setApplyBackgroundColor(true);
 		mRenderer.setBackgroundColor(Color.parseColor("#333333"));
-
-        mChart = ChartFactory.getCubeLineChartView(getActivity(), mDataset, mRenderer, 0.3f);
+        mChart = ChartFactory.getBubbleChartView(getActivity(), mDataset, mRenderer);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
         layout.addView(mChart);
 
@@ -140,14 +137,18 @@ public class GraphsTabFragment extends Fragment {
 				projection, null, null, null);
 	}
 	
+	
+	
 	// function to plot the points of the overall experience chart
-	public XYSeries experience_data(Cursor cursor) {
-		XYSeries result = new XYSeries("");
+	public XYValueSeries experience_data(Cursor cursor) {
+		XYValueSeries result = new XYValueSeries("Number of Sessions");
 		
 		int i = 1;
 		cursor.moveToFirst();
 		do {
-			result.add(i, cursor.getInt(mBathroomSessionCursor.getColumnIndex(Globals.KEY_EXPERIENCEQUALITY)));
+			int current = cursor.getInt(mBathroomSessionCursor.getColumnIndex(Globals.KEY_EXPERIENCEQUALITY));
+			int num = 3; // FILL THIS IN (SHOULD BE NUMBER OF SESSION THAT DAY)
+			result.add(Double.valueOf(i), Float.valueOf(String.valueOf(current)), num);
 		}
 		while (cursor.moveToNext());
 		
