@@ -1,6 +1,12 @@
 package edu.dartmouth.cs.tractable;
 
-import org.achartengine.model.XYSeries;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
@@ -40,24 +46,56 @@ public class MetricsTabFragment extends Fragment {
 
 		String av_experience;
 		String num_sessions;
+
+		double total_meals = 0;
+		double total_sleep = 0;
+		double sleep = 0;
+		double meals = 0;
 		// get metrics
 		if (mBathroomSessionCursor.getCount() != 0) {
 			av_experience = String
 					.valueOf(get_av_experience(mBathroomSessionCursor)); 
 			num_sessions = String.valueOf(get_total_sessions(mBathroomSessionCursor));
 			// if no entries have been logged, av = none
+			try {
+				total_meals = readMealFile("meals.txt");
+				total_sleep = readSleepFile("sleep.txt");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			meals = total_meals;
 
 		} else {
 			av_experience = "None Logged Yet!";
 			num_sessions = "0";
 		}
+		DecimalFormat df = new DecimalFormat("0.00##");
+		String result_meals = df.format(meals);
+		String result_sleep = df.format(total_sleep);
+		
 		// set the average experience value text in xml
 		TextView experience_view = (TextView) view
 				.findViewById(R.id.av_experience_text);
 		experience_view.setText(av_experience);
+		
+		// set the total number of sessions value text in xml
 		TextView total_sessions_view = (TextView) view
 				.findViewById(R.id.num_sessions_txt);
 		total_sessions_view.setText(num_sessions);
+		
+		// set the average number of meals value text in xml
+		TextView average_meals = (TextView) view
+				.findViewById(R.id.av_number_meals_text);
+		average_meals.setText(result_meals);
+		
+		// set the average hours of sleep value text in xml
+		TextView average_sleep = (TextView) view
+				.findViewById(R.id.av_hours_sleep_text);
+		average_sleep.setText(result_sleep);
 
 		return view;
 
@@ -88,4 +126,49 @@ public class MetricsTabFragment extends Fragment {
 	public int get_total_sessions(Cursor cursor) {
 		return cursor.getCount();
 	}
+	
+	// read in sleep info for use in metrics/graphs
+		private double readSleepFile(String filename) throws FileNotFoundException, IOException {
+			ArrayList<Double> sleep_lines = new ArrayList<Double>();
+			
+			InputStream is = mContext.getAssets().open(filename);
+			
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				String [] parts = line.split(",");
+				sleep_lines.add(Double.valueOf(parts[1]));
+			}
+			reader.close();
+			
+			double result = 0;
+			for (int i = 0; i < sleep_lines.size(); i++) {
+				result += sleep_lines.get(i);
+			}
+			result /= sleep_lines.size();
+			
+			return result;
+		}
+	
+	// read in meal info for use in metrics/graphs
+		private double readMealFile(String filename) throws FileNotFoundException, IOException {
+			ArrayList<Double> meal_lines = new ArrayList<Double>();
+			
+			InputStream is = mContext.getAssets().open(filename);
+			
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				String [] parts = line.split(" ");
+				meal_lines.add(Double.valueOf(parts[0]));
+			}
+			reader.close();
+			
+			double result = 0;
+			for (int i = 0; i < meal_lines.size(); i++) {
+				result += (meal_lines.get(i) / 24); //24 users in the study
+			}
+			result /= meal_lines.size();
+			return result;
+		}
 }

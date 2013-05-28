@@ -39,6 +39,8 @@ public class DisplaySessionActivity extends Activity {
 	public double longitude;
 	public Marker mMarker;
 
+	public static final String MINUTES_FORMAT = "%d minutes";
+	public static final String SECONDS_FORMAT = "%d seconds";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +77,12 @@ public class DisplaySessionActivity extends Activity {
 			@Override
 			public View getInfoContents(Marker arg0) {
 				View v = getLayoutInflater().inflate(R.layout.info_window, null);
-
+				
+				String bathroomName = i.getStringExtra(Globals.KEY_BUILDING);
+				if (bathroomName == null) bathroomName = "Unknown bathroom";
 				TextView tv = (TextView) v.findViewById(R.id.textBuilding);
-				tv.setText("Building: " + i.getStringExtra(Globals.KEY_BUILDING));
-
-				tv = (TextView) v.findViewById(R.id.textFloor);
-				tv.setText("Floor: " + i.getIntExtra(Globals.KEY_FLOOR, -1));
-
+				tv.setText("Building: " + bathroomName);
+				
 				tv = (TextView) v.findViewById(R.id.textBathroomQuality);
 				tv.setText("Bathroom Quality: " +
 						i.getDoubleExtra(Globals.KEY_BATHROOMQUALITY, -1) +
@@ -95,7 +96,11 @@ public class DisplaySessionActivity extends Activity {
 				tv = (TextView) v.findViewById(R.id.textComment);
 				tv.setText("Comment: " + 
 						i.getStringExtra(Globals.KEY_COMMENT));
-
+				
+				tv = (TextView) v.findViewById(R.id.textDuration);
+				tv.setText("Duration: " + 
+						parseDuration(i.getIntExtra(Globals.KEY_DURATION, -1)));
+				
 				return v;
 			}
 
@@ -120,7 +125,7 @@ public class DisplaySessionActivity extends Activity {
 
 		return true;
 	}
-
+	
 	//When you clicked "delete" button, 
 	//you need to called the deleteEntryInDB to delete this entry in the database and quit the activity.
 	@Override
@@ -139,4 +144,14 @@ public class DisplaySessionActivity extends Activity {
 			return false;
 		}
 	}
+	
+
+	// Convert duration in seconds to minutes.
+	private String parseDuration(int durationInSeconds) {
+		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
+				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
+						durationInSeconds);
+
+	}
+	
 }
