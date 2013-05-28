@@ -77,13 +77,11 @@ public class DisplaySessionActivity extends Activity {
 			@Override
 			public View getInfoContents(Marker arg0) {
 				View v = getLayoutInflater().inflate(R.layout.info_window, null);
-
+				
+				String bathroomName = i.getStringExtra(Globals.KEY_BUILDING);
+				if (bathroomName == null) bathroomName = "Unknown bathroom";
 				TextView tv = (TextView) v.findViewById(R.id.textBuilding);
-				tv.setText("Building: " + i.getStringExtra(Globals.KEY_BUILDING));
-
-				tv = (TextView) v.findViewById(R.id.textFloor);
-				tv.setText("Floor: " + i.getIntExtra(Globals.KEY_FLOOR, -1));
-
+				tv.setText("Building: " + bathroomName);
 				
 				tv = (TextView) v.findViewById(R.id.textBathroomQuality);
 				tv.setText("Bathroom Quality: " +
@@ -127,8 +125,7 @@ public class DisplaySessionActivity extends Activity {
 
 		return true;
 	}
-<<<<<<< HEAD
-
+	
 	//When you clicked "delete" button, 
 	//you need to called the deleteEntryInDB to delete this entry in the database and quit the activity.
 	@Override
@@ -147,7 +144,6 @@ public class DisplaySessionActivity extends Activity {
 			return false;
 		}
 	}
-=======
 	
 
 	// Convert duration in seconds to minutes.
@@ -158,5 +154,4 @@ public class DisplaySessionActivity extends Activity {
 
 	}
 	
->>>>>>> af00c948734f1a021c6c55e20ebcd396d9b0abeb
 }
