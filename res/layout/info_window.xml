@@ -9,10 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     
-		<TextView 
-		    android:id="@+id/textFloor"
-		    android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 		
 		<TextView
 		    android:id="@+id/textBathroomQuality"
@@ -26,6 +22,11 @@
 		
 		<TextView
 		    android:id="@+id/textComment"
+		    android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+		<TextView
+		    android:id="@+id/textDuration"
 		    android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     

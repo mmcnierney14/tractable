@@ -39,6 +39,8 @@ public class DisplaySessionActivity extends Activity {
 	public double longitude;
 	public Marker mMarker;
 
+	public static final String MINUTES_FORMAT = "%d minutes";
+	public static final String SECONDS_FORMAT = "%d seconds";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,7 @@ public class DisplaySessionActivity extends Activity {
 				tv = (TextView) v.findViewById(R.id.textFloor);
 				tv.setText("Floor: " + i.getIntExtra(Globals.KEY_FLOOR, -1));
 
+				
 				tv = (TextView) v.findViewById(R.id.textBathroomQuality);
 				tv.setText("Bathroom Quality: " +
 						i.getDoubleExtra(Globals.KEY_BATHROOMQUALITY, -1) +
@@ -95,7 +98,11 @@ public class DisplaySessionActivity extends Activity {
 				tv = (TextView) v.findViewById(R.id.textComment);
 				tv.setText("Comment: " + 
 						i.getStringExtra(Globals.KEY_COMMENT));
-
+				
+				tv = (TextView) v.findViewById(R.id.textDuration);
+				tv.setText("Duration: " + 
+						parseDuration(i.getIntExtra(Globals.KEY_DURATION, -1)));
+				
 				return v;
 			}
 
@@ -120,6 +127,7 @@ public class DisplaySessionActivity extends Activity {
 
 		return true;
 	}
+<<<<<<< HEAD
 
 	//When you clicked "delete" button, 
 	//you need to called the deleteEntryInDB to delete this entry in the database and quit the activity.
@@ -139,4 +147,16 @@ public class DisplaySessionActivity extends Activity {
 			return false;
 		}
 	}
+=======
+	
+
+	// Convert duration in seconds to minutes.
+	private String parseDuration(int durationInSeconds) {
+		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
+				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
+						durationInSeconds);
+
+	}
+	
+>>>>>>> af00c948734f1a021c6c55e20ebcd396d9b0abeb
 }

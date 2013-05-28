@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ LoaderManager.LoaderCallbacks<Cursor> {
 	public int mExperienceQualityIndex;
 	public int mLatitudeIndex;
 	public int mLongitudeIndex;
+	public int mDurationIndex;
 
 	// Different format to display the information
 	public static final String DATE_FORMAT = "H:mm:ss MMM d yyyy";
@@ -70,6 +72,7 @@ LoaderManager.LoaderCallbacks<Cursor> {
 		mExperienceQualityIndex = mBathroomSessionCursor.getColumnIndex(Globals.KEY_EXPERIENCEQUALITY);
 		mLatitudeIndex = mBathroomSessionCursor.getColumnIndex(Globals.KEY_LATITUDE);
 		mLongitudeIndex = mBathroomSessionCursor.getColumnIndex(Globals.KEY_LONGITUDE);
+		mDurationIndex = mBathroomSessionCursor.getColumnIndex(Globals.KEY_DURATION);
 
 		mCallbacks = this;
 
@@ -129,11 +132,15 @@ LoaderManager.LoaderCallbacks<Cursor> {
 		i = mBathroomSessionCursor.getInt(mExperienceQualityIndex);
 		extras.putInt(Globals.KEY_EXPERIENCEQUALITY, i);
 		
+		i = mBathroomSessionCursor.getInt(mDurationIndex);
+		extras.putInt(Globals.KEY_DURATION, i);
+		
 		double d = mBathroomSessionCursor.getDouble(mLatitudeIndex);
 		extras.putDouble(Globals.KEY_LATITUDE, d);
 		
 		d = mBathroomSessionCursor.getDouble(mLongitudeIndex);
 		extras.putDouble(Globals.KEY_LONGITUDE, d);
+		
 
 
 		// put the extras in and start the activity
@@ -154,6 +161,7 @@ LoaderManager.LoaderCallbacks<Cursor> {
 				Globals.KEY_BATHROOMQUALITY,
 				Globals.KEY_EXPERIENCEQUALITY,
 				Globals.KEY_COMMENT,
+				Globals.KEY_DURATION,
 
 		};
 
@@ -230,13 +238,6 @@ LoaderManager.LoaderCallbacks<Cursor> {
 		return dateFormat.format(calendar.getTime());
 	}
 
-	// Convert duration in seconds to minutes.
-	private String parseDuration(int durationInSeconds) {
-		return durationInSeconds > 60 ? String.format(MINUTES_FORMAT,
-				durationInSeconds / 60) : String.format(SECONDS_FORMAT,
-						durationInSeconds);
-
-	}
 
 
 
