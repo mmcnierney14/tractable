@@ -110,6 +110,7 @@ public class GraphsTabFragment extends Fragment {
 		mRenderer.setZoomLimits(new double[] { -10, 20, -10, 40 });
 		mRenderer.setApplyBackgroundColor(true);
 		mRenderer.setBackgroundColor(Color.parseColor("#333333"));
+		mRenderer.setPanEnabled(false, false);
         mChart = ChartFactory.getBubbleChartView(getActivity(), mDataset, mRenderer);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
         layout.addView(mChart);
@@ -141,7 +142,7 @@ public class GraphsTabFragment extends Fragment {
 	
 	// function to plot the points of the overall experience chart
 	public XYValueSeries experience_data(Cursor cursor) {
-		XYValueSeries result = new XYValueSeries("Number of Sessions");
+		XYValueSeries result = new XYValueSeries(" ");
 		
 		int i = 1;
 		cursor.moveToFirst();
