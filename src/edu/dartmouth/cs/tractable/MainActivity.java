@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 		     @Override
 		     public void onClick(View v) {
 		    	 // send to start page (ManualInputActivity)
-		    	 Intent i = new Intent(mContext, ManualInputActivity.class);
+		    	 Intent i = new Intent(mContext, TimerActivity.class);
 		    	 startActivity(i);
 		     }      
 		});
