@@ -1,9 +1,13 @@
 package edu.dartmouth.cs.tractable;
 
+import java.util.HashMap;
+
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.Intent;
 import android.location.Location;
@@ -33,9 +37,8 @@ public class ManualInputActivity extends Activity {
 	private double latitude;
 	private double longitude;
 	
-	public Intent mBathroomServiceIntent;
-	public BathroomInferenceService mBathroomInferenceService;
 	public String mBathroomName;
+	private HashMap<String, String> bathroomMap;
 	
 	public TextView bathroomNameView;
 
@@ -44,32 +47,19 @@ public class ManualInputActivity extends Activity {
 	public static final int LIST_ITEM_ID_TIME = 1;
 	public static final int LIST_ITEM_ID_DURATION = 2;
 	public Uri manualInputURI;
-	
-	// Service connection for bathroom service
-	private ServiceConnection connection = new ServiceConnection() {
-		@Override
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBathroomInferenceService = ((BathroomInferenceService.TractableBinder) service).getService();
-			
-			mBathroomName = mBathroomInferenceService.bathroomName;
-			
-			if (mBathroomName != null) bathroomNameView.setText(mBathroomName);
-			
-			Log.d(Globals.TAG, "Closest wifi name: " + mBathroomName);
-		}
-
-		@Override
-		public void onServiceDisconnected(ComponentName arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-	};
 
 	// skeleton
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		
+		registerReceiver(locationReceiver, new IntentFilter("bio_location"));
+		
+		// Populate bathroom name hashmap
+		bathroomMap = new HashMap<String, String>();
+		bathroomMap.put("newhamp-2-4-ap", "New Hampshire Hall First Floor");
+		bathroomMap.put("sudikoff-1-9-ap", "Sudikoff Basement");
 		
 
 		// Setting the UI layout
@@ -87,23 +77,22 @@ public class ManualInputActivity extends Activity {
 		// Location manager for getting wifi location
 		mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 		
-		// Bathroom inference service to get closest bathroom name
-		mBathroomServiceIntent = new Intent(this, BathroomInferenceService.class);
-		startService(mBathroomServiceIntent);
-		bindService(mBathroomServiceIntent, connection, Context.BIND_AUTO_CREATE);
-		
 		// Get the bathroom text view
 		bathroomNameView = (TextView) findViewById(R.id.bathroom_name);
-		
-		
-		// set up adapter for AutoComplete building list
-//		AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.actBuilding);
-//	    String [] buildings = getResources().getStringArray(R.array.building_array);
-//	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, buildings);
-//	    mAutoComplete.setAdapter(adapter);
-		
-		
-		
+	}
+	
+	private BroadcastReceiver locationReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			Bundle data = intent.getExtras();
+			String wifiData = data.getString("key_bio_location", "");
+			mBathroomName = getBathroomName(wifiData.split(";")[0].split(",")[1]);
+			bathroomNameView.setText(mBathroomName);
+		}
+	};
+	
+	private String getBathroomName(String wifiName) {
+		return bathroomMap.get(wifiName);
 	}
 
 	// "Save" button is clicked
