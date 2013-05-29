@@ -1,5 +1,7 @@
 package edu.dartmouth.cs.tractable;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -15,7 +17,6 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -79,7 +80,6 @@ public class DisplaySessionActivity extends Activity {
 				View v = getLayoutInflater().inflate(R.layout.info_window, null);
 				
 				String bathroomName = i.getStringExtra(Globals.KEY_BUILDING);
-				if (bathroomName == null) bathroomName = "Unknown bathroom";
 				TextView tv = (TextView) v.findViewById(R.id.textBuilding);
 				tv.setText("Building: " + bathroomName);
 				

@@ -1,5 +1,9 @@
 package edu.dartmouth.cs.tractable;
 
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,10 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import java.util.Random;
 
 public class TimerActivity extends Activity {
 

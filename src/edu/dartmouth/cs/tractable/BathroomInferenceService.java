@@ -10,7 +10,7 @@ import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.util.Log;
+
 
 public class BathroomInferenceService extends Service {
 	

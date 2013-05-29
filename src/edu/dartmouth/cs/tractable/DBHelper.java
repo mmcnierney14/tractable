@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
+
 public class DBHelper extends SQLiteOpenHelper {
 		// To create and upgrade a database in your app, you need to inherit the SQLiteOpenHelper class. 
 	

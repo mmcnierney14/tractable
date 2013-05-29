@@ -1,20 +1,13 @@
 package edu.dartmouth.cs.tractable;
 
-import java.util.Random;
-
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
 import org.achartengine.chart.PointStyle;
-import org.achartengine.model.CategorySeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
-import org.achartengine.model.XYSeries;
 import org.achartengine.model.XYValueSeries;
-import org.achartengine.renderer.DefaultRenderer;
-import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
-import android.app.ActionBar.LayoutParams;
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Context;
@@ -27,9 +20,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class GraphsTabFragment extends Fragment {
 	// charting variables
