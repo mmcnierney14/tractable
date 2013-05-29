@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="GoogleMapsKey">AIzaSyDGSlv4PiCLlWaspHyMeeIJ4o78tRBKWAI</string>
+    <string name="GoogleMapsKey">ApiKeyHere</string>
     
 </resources>
