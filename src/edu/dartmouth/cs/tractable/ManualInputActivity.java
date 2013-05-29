@@ -60,7 +60,17 @@ public class ManualInputActivity extends Activity {
 		bathroomMap = new HashMap<String, String>();
 		bathroomMap.put("newhamp-2-4-ap", "New Hampshire Hall First Floor");
 		bathroomMap.put("sudikoff-1-9-ap", "Sudikoff Basement");
-		
+		bathroomMap.put("vail-6-4-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-4-14-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-3-13-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-4-15-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("dana-3-1-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-3-12-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-2-14-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-2-1-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-3-2-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-2-10-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("lsb-3-1-ap", "Life Sciences Center Second Floor");
 
 		// Setting the UI layout
 		setContentView(R.layout.manualinput);
