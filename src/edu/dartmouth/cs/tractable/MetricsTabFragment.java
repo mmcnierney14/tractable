@@ -121,6 +121,37 @@ public class MetricsTabFragment extends Fragment {
 
 		return av_experience;
 	}
+	
+	// function to get the most used bathroom
+	public String get_fave_bathroom(Cursor cursor) {
+		// move cursor to beginning of set
+		cursor.moveToFirst();
+		
+		String result = "";
+		
+		// find max used bathroom string
+		do {
+//			String cur_bathroom = cursor.getString(Globals.KEY_BUILDING);
+//	        int counter = 0;
+//	        for (int i = 1; i < num.length; ++i) {
+//	            if (current_number == Integer.parseInt(num[i])) {
+//	                ++counter;
+//
+//	            } else if (counter == 0) {
+//	                current_number = Integer.parseInt(num[i]);
+//	                ++counter;
+//
+//	            } else {
+//	                --counter;
+//
+//	            }
+//	        }
+//
+//	        return current_number;
+		} while (cursor.moveToNext());
+		
+		return result;
+	}
 
 	// function to get the number of bathroom sessions
 	public int get_total_sessions(Cursor cursor) {

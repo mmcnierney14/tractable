@@ -111,7 +111,7 @@ public class GraphsTabFragment extends Fragment {
 		mRenderer.setApplyBackgroundColor(true);
 		mRenderer.setBackgroundColor(Color.parseColor("#333333"));
 		mRenderer.setPanEnabled(false, false);
-        mChart = ChartFactory.getBubbleChartView(getActivity(), mDataset, mRenderer);
+        mChart = ChartFactory.getLineChartView(getActivity(), mDataset, mRenderer);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.chart);
         layout.addView(mChart);
 
