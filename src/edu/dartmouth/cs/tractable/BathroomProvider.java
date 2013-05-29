@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
+
 // The BathroomProvider class is the ContentProvider of the Tractable app.
 // It stores all the BathroomSessions into the ContentProvider. 
 
