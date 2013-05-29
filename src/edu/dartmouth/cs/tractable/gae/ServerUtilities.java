@@ -50,9 +50,7 @@ public final class ServerUtilities {
 				GCMRegistrar.setRegisteredOnServer(context, true);
 				return true;
 			} catch (IOException e) {
-				// Here we are simplifying and retrying on any error; in a real
-				// application, it should retry only on unrecoverable errors
-				// (like HTTP error code 503).
+				
 				Log.e(Globals.TAG, "Failed to register on attempt " + i, e);
 				if (i == MAX_ATTEMPTS) {
 					break;

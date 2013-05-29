@@ -87,7 +87,6 @@ public class XYChartBuilder extends Activity {
     mRenderer.setAxisTitleTextSize(16);
     mRenderer.setChartTitleTextSize(20);
     mRenderer.setLabelsTextSize(15);
-    mRenderer.setLegendTextSize(15);
     mRenderer.setMargins(new int[] { 20, 30, 15, 0 });
     mRenderer.setZoomButtonsVisible(true);
     mRenderer.setPointSize(5);

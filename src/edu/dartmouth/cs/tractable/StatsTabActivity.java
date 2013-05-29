@@ -54,12 +54,6 @@ private static final String TAB_INDEX_KEY = "tab_index";
 		outState.putInt(TAB_INDEX_KEY, this.getActionBar().getSelectedNavigationIndex());
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.stats_tab, menu);
-		return true;
-	}
 	
 
 public static class TabListener<T extends Fragment> implements ActionBar.TabListener {

@@ -88,10 +88,10 @@ public class GraphsTabFragment extends Fragment {
 		mRenderer.setYAxisMax(12, 0);
 		mRenderer.setXTitle("Time");
 		mRenderer.setYTitle("Experience");
+		mRenderer.setShowLegend(false);
 		mRenderer.setAxisTitleTextSize(40);
 		mRenderer.setChartTitleTextSize(12);
-		mRenderer.setLabelsTextSize(10);
-		mRenderer.setLegendTextSize(12);
+		mRenderer.setLabelsTextSize(25);
 		mRenderer.setPointSize(5f);
 		mRenderer.setXLabels(12);
 		mRenderer.setYLabels(12);

@@ -26,7 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class ManualInputActivity extends Activity {
 
-	// Exercise entry
+	// Bathroom entry
 	public BathroomSessionHelper mEntry;
 	
 	public LocationManager mLocationManager;
@@ -44,7 +44,6 @@ public class ManualInputActivity extends Activity {
 	public static final int LIST_ITEM_ID_DURATION = 2;
 	public Uri manualInputURI;
 
-	// skeleton
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -71,7 +70,7 @@ public class ManualInputActivity extends Activity {
 		// Setting the UI layout
 		setContentView(R.layout.manualinput);
 
-		// Initialize the ExerciseEntryHelper()
+		// Initialize the BathroomSessionHelper()
 		mEntry = new BathroomSessionHelper();
 		
 		// get the duration from the timer and save it into the entry
@@ -110,7 +109,7 @@ public class ManualInputActivity extends Activity {
 		setComment();
 		setLocation();
 
-		// Insert the exercise entry into database
+		// Insert the bathroom session into database
 		mEntry.insertToDB(this);
 
 		Toast.makeText(getApplicationContext(), "Entry Saved", Toast.LENGTH_SHORT).show();
@@ -120,7 +119,6 @@ public class ManualInputActivity extends Activity {
 		startActivity(intent);
 	}
 
-	//skeleton
 	// "Cancel" button is clicked
 	public void onCancelClicked(View v) {
 		// Pop up a toast, discard the input and close the activity directly
@@ -129,6 +127,25 @@ public class ManualInputActivity extends Activity {
 				"Canceled",
 				Toast.LENGTH_SHORT).show();
 		// Close the activity and go back to start page
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
+	
+	@Override
+	public void onPause() {
+		unregisterReceiver(locationReceiver);
+		super.onPause();
+	}
+	
+	@Override
+	public void onResume() {
+		registerReceiver(locationReceiver, new IntentFilter("bio_location"));
+		super.onResume();
+	}
+	
+	@Override
+	public void onBackPressed() {
 		Intent intent = new Intent(this, MainActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);

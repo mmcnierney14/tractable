@@ -248,8 +248,6 @@ LoaderManager.LoaderCallbacks<Cursor> {
 
 	//ActivityEntriesCursorAdapter is specialized adapter for a list view, 
 	//when the data comes from database. 
-	//Also you need to override BindView function to set our data which means, take the data from the cursor 
-	//and put it into views.
 
 	private class BathroomSessionsCursorAdapter extends CursorAdapter {
 
@@ -260,8 +258,7 @@ LoaderManager.LoaderCallbacks<Cursor> {
 			mInflater = LayoutInflater.from(context);
 		}
 
-		//Override the BindView function to set our data which means, 
-		//take the data from the cursor and put it into views.
+		
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
 
