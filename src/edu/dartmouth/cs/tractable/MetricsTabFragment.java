@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
 public class MetricsTabFragment extends Fragment {
 
 	// The callbacks through which we will interact with the LoaderManager.
