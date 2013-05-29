@@ -46,7 +46,7 @@ public class TimerActivity extends Activity {
 		funfacts[13] = "Don't spend too much time on the toilet. You might develop hemorrhoids!";
 		funfacts[14] = "Everyone has a unique tongue print, similar to your fingerprint.";
 		funfacts[15] = "Adult humans have 100 less bones than baby humans.";
-		funfacts[16] = "Your nose can remember 50000 scents, including the smell of this shit.";
+		funfacts[16] = "Your nose can remember 50000 scents.";
 		funfacts[17] = "Every square inch of human skin has about 32 million bacteria on it.";
 		funfacts[18] = "There are about 60000 miles of blood vessels in your body.";
 		funfacts[19] = "The average person produces enough saliva in their lifetime to fill two swimming pools.";
