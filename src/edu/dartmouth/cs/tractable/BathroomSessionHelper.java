@@ -41,14 +41,17 @@ public class BathroomSessionHelper {
 		// put all the data saved in BathroomSession into the ContentValues object.
 		ContentValues values = new ContentValues();
 		values.put(Globals.KEY_DATE_TIME, mData.getDateTime().getTime());
-		values.put(Globals.KEY_LATITUDE, mData.getLocation().latitude);
-		values.put(Globals.KEY_LONGITUDE, mData.getLocation().longitude);
+		values.put(Globals.KEY_DURATION, mData.getDuration());
+		if (mData.getBuilding() == null) {
+			mData.setBuilding("Unknown building");
+		}
 		values.put(Globals.KEY_BUILDING, mData.getBuilding());
 		values.put(Globals.KEY_FLOOR, mData.getFloor());
 		values.put(Globals.KEY_BATHROOMQUALITY, mData.getBathroomQuality());
 		values.put(Globals.KEY_EXPERIENCEQUALITY, mData.getExperienceQuality());
+		values.put(Globals.KEY_LATITUDE, mData.getLocation().latitude);
+		values.put(Globals.KEY_LONGITUDE, mData.getLocation().longitude);
 		values.put(Globals.KEY_COMMENT, mData.getComment());
-		values.put(Globals.KEY_DURATION, mData.getDuration());
 
 //		// get the content resolver, insert the ContentValues into HistoryProvider.
   		Uri uri = context.getContentResolver().insert(BathroomProvider.CONTENT_URI, values);
@@ -73,7 +76,7 @@ public class BathroomSessionHelper {
 
 	// Overloading class function to delete current entry.
 	public void deleteEntryInDB(Context context) {
-		
+		deleteEntryInDB(context, getID());
 	}	
 	
 	// *******************************************************//

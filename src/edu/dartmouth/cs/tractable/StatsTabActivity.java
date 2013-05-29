@@ -8,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 
+
 public class StatsTabActivity extends Activity {
 
 private static final String TAB_INDEX_KEY = "tab_index";

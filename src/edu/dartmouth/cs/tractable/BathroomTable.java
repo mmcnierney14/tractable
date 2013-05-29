@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 
+
 //HistoryTable contains constants for the table name and the columns. 
 public class BathroomTable{
 	
@@ -32,10 +33,8 @@ public class BathroomTable{
 					+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ KEY_DATE_TIME
 					+ " DATETIME NOT NULL, "
-					+ KEY_LATITUDE
-					+ " DOUBLE, "
-					+ KEY_LONGITUDE
-					+ " DOUBLE, "
+					+ KEY_DURATION
+					+ " INTEGER, "
 					+ KEY_BUILDING
 					+ " TEXT, "
 					+ KEY_FLOOR
@@ -44,10 +43,12 @@ public class BathroomTable{
 					+ " INTEGER, "
 					+ KEY_EXPERIENCEQUALITY
 					+ " INTEGER, "
+					+ KEY_LATITUDE
+					+ " DOUBLE, "
+					+ KEY_LONGITUDE
+					+ " DOUBLE, "
 					+ KEY_COMMENT
-					+ " TEXT, "
-					+ KEY_DURATION
-					+ " INTEGER "
+					+ " TEXT "
 					+ ");";
 			
 			public static void onCreate(SQLiteDatabase database) {
