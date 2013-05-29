@@ -66,6 +66,11 @@ public class ManualInputActivity extends Activity {
 		bathroomMap.put("lsb-3-2-ap", "Life Sciences Center Second Floor");
 		bathroomMap.put("lsb-2-10-ap", "Life Sciences Center Second Floor");
 		bathroomMap.put("lsb-3-1-ap", "Life Sciences Center Second Floor");
+		bathroomMap.put("LSB-3-16-AP", "Life Sciences Center Second Floor");
+		bathroomMap.put("LSB-3-19-AP", "Life Sciences Center Second Floor");
+		bathroomMap.put("LSB-3-18-AP", "Life Sciences Center Second Floor");
+
+
 
 		// Setting the UI layout
 		setContentView(R.layout.manualinput);

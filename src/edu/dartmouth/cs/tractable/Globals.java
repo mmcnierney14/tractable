@@ -39,10 +39,10 @@ public abstract class Globals {
 
 	// Consts for GCM
 	// Google API project id registered to use GCM.
-	public static final String SENDER_ID = "770331077346";
+	public static final String SENDER_ID = "YOUR GOOGLE PROJECT ID HERE";
 	// URL of the AppEngine Server 
 	// Different student should have different ones.
-	public static final String SERVER_URL = "http://10.31.234.140:8888";
+	public static final String SERVER_URL = "YOUR SERVER URL HERE";
 	// Intent used to display a message in the screen.
 	public static final String DISPLAY_MESSAGE_ACTION = "DISPLAY_MESSAGE";
 	//Intent's extra that contains the message to be displayed.
